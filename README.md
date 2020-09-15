@@ -45,6 +45,21 @@ spec:
               readOnly: true
 ```
 
+The replicated/volume-mount-checker container will need permissions to delete its own pod (pods in its own namespace).
+
+An example Role that is needed by the container:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-deleter
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["delete"]
+```
+
 ## Releasing
 
 Releases are created when a tag is pushed to the upstream repository.
