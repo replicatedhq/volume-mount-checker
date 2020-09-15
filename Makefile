@@ -2,7 +2,7 @@
 SHELL := /bin/bash -euo pipefail
 
 IMAGE := replicated/volume-mount-checker
-RELEASE_VERSION :=`git describe --tags --dirty`
+RELEASE_VERSION ?= latest
 
 GIT_TREE = $(shell git rev-parse --is-inside-work-tree 2>/dev/null)
 ifneq "$(GIT_TREE)" ""
@@ -34,5 +34,5 @@ push:
 .PHONY: release
 release:
 	docker pull $(IMAGE):$(GIT_SHA)
-	docker tag $(IMAGE):$(GIT_SHA) $(IMAGE):$(VERSION)
+	docker tag $(IMAGE):$(GIT_SHA) $(IMAGE):$(RELEASE_VERSION)
 	docker push $(IMAGE):$(RELEASE_VERSION)
