@@ -1,4 +1,4 @@
-FROM alpine:3.12 AS build
+FROM alpine:3.13 AS build
 
 # install kubectl
 RUN apk add curl
@@ -11,7 +11,7 @@ RUN curl -fsSLO "${KUBECTL_URL}" \
 	&& mv kubectl "/usr/local/bin/kubectl-${KUBECTL_VERSION}" \
 	&& ln -s "/usr/local/bin/kubectl-${KUBECTL_VERSION}" /usr/local/bin/kubectl
 
-FROM alpine:3.12
+FROM alpine:3.13
 
 RUN apk add --update \
     bash \
