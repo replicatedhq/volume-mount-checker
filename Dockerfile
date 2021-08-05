@@ -13,7 +13,7 @@ RUN curl -fsSLO "${KUBECTL_URL}" \
 
 FROM alpine:3.14
 
-RUN apk add --update \
+RUN apk add --update --upgrade \
     bash \
 	\
 	\
