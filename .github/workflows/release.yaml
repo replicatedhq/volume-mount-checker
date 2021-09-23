@@ -36,3 +36,5 @@ jobs:
       - name: Push to Replicated
         id: release_replicated
         run: make release-replicated
+        env:
+          RELEASE_VERSION: ${{ steps.release_version.outputs.RELEASE_VERSION }}
