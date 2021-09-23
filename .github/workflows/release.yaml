@@ -28,3 +28,10 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+      - uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.REPLICATED_REGISTRY_SECRET }}
+          password: ${{ secrets.REPLICATED_REGISTRY_SECRET }}
+      - name: Push to Replicated
+        id: release_replicated
+        run: make release-replicated

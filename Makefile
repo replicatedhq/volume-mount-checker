@@ -36,3 +36,8 @@ release:
 	docker pull $(IMAGE):$(GIT_SHA)
 	docker tag $(IMAGE):$(GIT_SHA) $(IMAGE):$(RELEASE_VERSION)
 	docker push $(IMAGE):$(RELEASE_VERSION)
+
+.PHONY: release-replicated
+release-replicated:
+	docker tag $(IMAGE):$(RELEASE_VERSION) registry.replicated.com/library/volume-mount-checker:$(RELEASE_VERSION)
+	docker push registry.replicated.com/library/volume-mount-checker:$(RELEASE_VERSION)
