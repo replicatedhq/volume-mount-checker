@@ -25,6 +25,11 @@ endif
 build:
 	docker build -t $(IMAGE):$(GIT_SHA) .
 
+.PHONY: scan
+scan:
+	curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+	grype --fail-on medium --only-fixed $(IMAGE):$(GIT_SHA)
+
 .PHONY: push
 push:
 	docker tag $(IMAGE):$(GIT_SHA) $(IMAGE):latest
