@@ -13,10 +13,11 @@ RUN curl -fsSLO "${KUBECTL_URL}" \
 
 FROM alpine:3.18
 
-RUN apk add --no-cache \
+RUN apk add --update --upgrade --no-cache \
     bash \
 	\
 	\
+	libssl3 \
   && rm -rf /var/cache/apk/*
 
 WORKDIR /home/replicated
