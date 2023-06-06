@@ -1,4 +1,4 @@
-FROM alpine:3.15 AS build
+FROM alpine:3.18 AS build
 
 # install kubectl
 RUN apk add curl
@@ -11,13 +11,13 @@ RUN curl -fsSLO "${KUBECTL_URL}" \
 	&& mv kubectl "/usr/local/bin/kubectl-${KUBECTL_VERSION}" \
 	&& ln -s "/usr/local/bin/kubectl-${KUBECTL_VERSION}" /usr/local/bin/kubectl
 
-FROM alpine:3.15
+FROM alpine:3.18
 
-RUN apk add --update --upgrade \
+RUN apk add --update --upgrade --no-cache \
     bash \
 	\
 	\
-	apk-tools \
+	libssl3 \
   && rm -rf /var/cache/apk/*
 
 WORKDIR /home/replicated
