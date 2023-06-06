@@ -28,7 +28,7 @@ build:
 .PHONY: scan
 scan:
 	curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b bin
-	grype --fail-on medium --only-fixed $(IMAGE):$(GIT_SHA)
+	./bin/grype --fail-on medium --only-fixed $(IMAGE):$(GIT_SHA)
 
 .PHONY: push
 push:
