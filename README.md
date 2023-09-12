@@ -60,6 +60,12 @@ rules:
     verbs: ["delete"]
 ```
 
+## Scanning image prior to release
+
+```
+make build scan
+```
+
 ## Releasing
 
 Releases are created when a tag is pushed to the upstream repository.
