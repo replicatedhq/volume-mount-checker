@@ -1,4 +1,4 @@
-FROM alpine:3.18 AS build
+FROM alpine:3.19 AS build
 
 # install kubectl
 RUN apk add curl
