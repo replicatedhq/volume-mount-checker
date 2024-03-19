@@ -68,7 +68,7 @@ make build scan
 
 ## Releasing
 
-Releases are created when a tag is pushed to the upstream repository.
+Releases are created when a tag is pushed to the upstream repository. Note that in tagging a release does not cause images to be rebuilt.
 
 ```
 git tag -a v1.0.0 -m "Release 1.0.0" && git push origin v1.0.0
